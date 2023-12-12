@@ -164,10 +164,10 @@ local function create_entry_maker(entry)
 			return displayer({
 				{ f_icon, f_hl_group },
 				{ _entry.name, "TermCursorNC" },
-				{ _entry.directory_only, "Comment" },
+				{ relative_path, "Comment" },
 			})
 		end,
-		ordinal = name .. " " .. directory_only,
+		ordinal = name .. " " .. relative_path,
 		directory_only = directory_only == "." and "" or directory_only,
 		name = name,
 		value = entry,
