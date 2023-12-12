@@ -188,6 +188,16 @@ M.pick = function(opts)
 			}),
 			sorter = conf.file_sorter(),
 			previewer = conf.file_previewer(opts),
+			attach_mappings = function(prompt_bufnr)
+				local actions = require "telescope.actions"
+				local action_state = require "telescope.actions.state"
+				actions.select_default:replace(function()
+					actions.close(prompt_bufnr)
+					local selection = action_state.get_selected_entry()
+					vim.cmd("e " .. selection.value)
+				end)
+				return true
+			end
 		})
 		:find()
 end
